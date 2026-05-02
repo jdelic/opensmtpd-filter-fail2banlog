@@ -25,7 +25,7 @@ func (f *Fail2banFilter) GetName() string {
 func (f *Fail2banFilter) LinkAuth(fw opensmtpd.FilterWrapper, ev opensmtpd.FilterEvent) {
 	params := ev.GetParams()
 	if len(params) != 2 {
-		log.Printf("opensmtpd-f2b: malformed link-auth session=%s params=%q",
+		log.Printf("malformed link-auth session=%s params=%q",
 			ev.GetSessionId(), params)
 		return
 	}
@@ -48,7 +48,7 @@ func (f *Fail2banFilter) LinkAuth(fw opensmtpd.FilterWrapper, ev opensmtpd.Filte
 	}
 
 	// Single stable line for fail2ban to match.
-	log.Printf("opensmtpd-f2b: auth-failure rip=%s user=%q rdns=%q result=%q session=%s",
+	log.Printf("auth-failure rip=%s user=%q rdns=%q result=%q session=%s",
 		ip, username, rdns, result, ev.GetSessionId())
 }
 
