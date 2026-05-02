@@ -17,8 +17,8 @@ func (f *Fail2banFilter) GetName() string {
 
 // link-auth params according to the framework's session tracker:
 //
-//	params[0] = username
-//	params[1] = result
+//	params[0] = result
+//	params[1] = username
 //
 // The mixin treats result == "pass" as success and stores the username only then.
 // For fail2ban we only care about non-pass results.
@@ -30,8 +30,8 @@ func (f *Fail2banFilter) LinkAuth(fw opensmtpd.FilterWrapper, ev opensmtpd.Filte
 		return
 	}
 
-	username := params[0]
-	result := params[1]
+	result := params[0]
+	username := params[1]
 
 	if result == "pass" {
 		return
